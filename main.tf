@@ -51,7 +51,8 @@ resource "azurerm_role_assignment" "this" {
 }
 
 module "vault_role" {
-  source = "github.com/ptonini/terraform-vault-azure-role"
+  source = "ptonini/azure-role/vault"
+  version = "~> 1.0.0"
   count = var.vault_role != null ? 1 : 0
   name = var.vault_role
   ttl = var.vault_ttl
