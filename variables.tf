@@ -1,53 +1,34 @@
 variable "name" {}
 
-variable "group_ids" {
-  default = []
+variable "alternative_names" {
+  type    = set(string)
+  default = null
 }
 
-variable "builtin_roles" {
-  default = []
+variable "notification_email_addresses" {
+  type    = set(string)
+  default = null
 }
 
-variable "roles" {
-  default = {}
-  type = map(object({
-    scope = string
-    definition_name = string
-  }))
+variable "owners" {
+  type    = set(string)
+  default = null
 }
+
 
 variable "create_password" {
   default = false
 }
 
-variable "resource_accesses" {
+variable "scopes" {
+  type = map(object({
+    scope                = string
+    role_definition_name = string
+  }))
   default = {}
 }
 
-variable "homepage_url" {
-  default = null
-}
-
-variable "save_credentials" {
-  default = false
-}
-
-variable "vault_secrets_backend" {
-  default = "azure/"
-}
-
-variable "vault_kv_backend" {
-  default = "secret/"
-}
-
-variable "vault_role" {
-  default = null
-}
-
-variable "vault_ttl" {
-  default = null
-}
-
-variable "vault_max_ttl" {
-  default = null
+variable "group_memberships" {
+  type    = set(string)
+  default = []
 }

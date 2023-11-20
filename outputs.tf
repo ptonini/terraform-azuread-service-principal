@@ -2,10 +2,14 @@ output "this" {
   value = azuread_service_principal.this
 }
 
-output "application" {
-  value = azuread_application.this
+output "application_id" {
+  value = azuread_application.this.id
+}
+
+output "client_id" {
+  value = azuread_application.this.client_id
 }
 
 output "password" {
-  value = try(azuread_service_principal_password.this.0.value, null)
+  value = var.create_password ? azuread_service_principal_password.this[0] : 0
 }
