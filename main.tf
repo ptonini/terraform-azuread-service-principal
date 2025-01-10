@@ -4,7 +4,6 @@ resource "azuread_application" "this" {
 
 resource "azuread_service_principal" "this" {
   client_id                    = azuread_application.this.client_id
-  application_id               = null
   alternative_names            = var.alternative_names
   notification_email_addresses = var.notification_email_addresses
   owners                       = var.owners
